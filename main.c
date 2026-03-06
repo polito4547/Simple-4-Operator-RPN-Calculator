@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main() {
+int main(void) {
     // Allocate space for exactly two doubles on the heap
     double *register_ptr = (double *)malloc(2 * sizeof(double));
 
@@ -35,6 +35,9 @@ int main() {
                     temp_val = *(register_ptr + 0) - *(register_ptr + 1);
                     break;
                 case '*':
+                    if (*(register_ptr + 1) == -0.0) {
+                        *(register_ptr + 1) = 0.0;
+                    }
                     temp_val = *(register_ptr + 0) * *(register_ptr + 1);
                     break;
                 case '/':
