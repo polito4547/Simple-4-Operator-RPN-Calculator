@@ -38,6 +38,10 @@ int main() {
                     temp_val = *(register_ptr + 0) * *(register_ptr + 1);
                     break;
                 case '/':
+                    if (*(register_ptr + 1) == 0) {
+                        printf("ERR: DIV BY 0\n");
+                        continue;
+                    }
                     temp_val = *(register_ptr + 0) / *(register_ptr + 1);
                     break;
             }
