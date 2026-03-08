@@ -14,11 +14,14 @@ int main(void) {
     *(register_ptr + 1) = 0.0; // The Newer value
 
     char input[32];
+    int  c = 0;
     double temp_val;
 
     printf("2-Slot RPN (Type a number or +, -, *, /)\n");
 
-    while (scanf("%s", input) == 1) {
+    while (scanf("%31[^\n]", input) == 1) {
+        while ((c = getchar()) != '\n' && c != EOF);
+
         // Check if input is an operator
         if (isdigit(input[0]) || (input[0] == '-' && isdigit(input[1]))){
             *(register_ptr + 0) = *(register_ptr + 1);
